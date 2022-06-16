@@ -11,7 +11,7 @@ package com.javatunes.product;
 import java.util.Collection;
 
 public class Order {
-  private String id;
+  private final String id;
   
   public Order(String id) {
     this.id = id;
@@ -22,8 +22,11 @@ public class Order {
    * get the items from the cart and iterate over them, print each item's product code
    * get cart total and print
    */
-  public void processCart(Object reference_to_cart) {
-    
+  public double processCart(ShoppingCart<? extends Product> cart) {
+    for(Product item : cart.allItems()) {
+      System.out.printf("Product Code: %s, Price: %.2f\n", item.getCode(), item.getPrice());
+    }
+    return cart.total();
   }
   
   public String getId() {

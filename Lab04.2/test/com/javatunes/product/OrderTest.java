@@ -39,7 +39,8 @@ public class OrderTest {
    *  order-3 is for the contents of meduaCart.
    */
   @Test
-  public void testProcessCart() {
-    
+  public void processCart_product() {
+    Order order = new Order("myGoodies");
+    assertEquals(60, order.processCart(productCart), 0.001);
   }
 }
