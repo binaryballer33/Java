@@ -19,42 +19,6 @@ public class Catalog {
   // in-memory catalog of Televisions
   private static final Collection<Television> catalog = new ArrayList<>(30);
 
-  // prevent direct instantiation, this is an all-static class
-  private Catalog() {
-  }
-  
-  /**
-   * Searches catalog by brand, and returns a collection of matching Televisions.
-   * A no-matches result should be an empty collection (not null).
-   */
-  public static Collection<Television> findByBrand(String brand) {
-    return null;
-  }
-  
-  /**
-   * Searches catalog by one or more brands, and returns a map with an entry for each brand supplied, 
-   * with a corresponding collection of matching Televisions for that brand.
-   * A no-brands-passed result should be an empty map (not null).
-   */
-  public static Map<String,Collection<Television>> findByBrands(String... brands) {
-    return null;
-  }
-
-  /**
-   * Returns entire catalog.
-   * NOTE: returning a direct reference to it has consequences!
-   *  A client can manipulate it, since it has a direct reference to it.
-   *  Sometimes this is okay, but not here.
-   *  
-   * TODO: change this to return a read-only view of the catalog.
-   * 
-   * You should explore the Javadoc for the java.util.Collections *class*.
-   *  This is an all-static utility class, not the java.util.Collection interface.
-   */
-  public static Collection<Television> getInventory() {
-    return catalog;
-  }
-
   /*
    * Loads catalog.
    * Static initializers execute when the class is loaded into the JVM.
@@ -91,4 +55,56 @@ public class Catalog {
     catalog.add(new Television("Sony",    22));
     catalog.add(new Television("RCA",     50));
   }
+
+  // prevent direct instantiation, this is an all-static class
+  private Catalog() {
+  }
+
+  /**
+   * Searches catalog by brand, and returns a collection of matching Televisions.
+   * A no-matches result should be an empty collection (not null).
+   */
+  public static Collection<Television> findByBrand(String brand) {
+    Collection<Television> tvs = new ArrayList<>();
+
+    for(Television tv : catalog) {
+      if(tv.getBrand().equals(brand)) {
+        tvs.add(tv);
+      }
+    }
+
+    return tvs;
+  }
+
+  /**
+   * Searches catalog by one or more brands, and returns a map with an entry for each brand supplied,
+   * with a corresponding collection of matching Televisions for that brand.
+   * A no-brands-passed result should be an empty map (not null).
+   */
+  public static Map<String,Collection<Television>> findByBrands(String... brands) {
+    Map<String, Collection<Television>> tvs = new HashMap<>();
+    for(String brand : brands) {
+      tvs.put(brand, findByBrand(brand));
+    }
+
+    return tvs;
+  }
+
+  /**
+   * Returns entire catalog.
+   * NOTE: returning a direct reference to it has consequences!
+   *  A client can manipulate it, since it has a direct reference to it.
+   *  Sometimes this is okay, but not here.
+   *
+   * TODO: change this to return a read-only view of the catalog.
+   *
+   * You should explore the Javadoc for the java.util.Collections *class*.
+   *  This is an all-static utility class, not the java.util.Collection interface.
+   */
+
+
+  public static Collection<Television> getInventory() {
+    return catalog;
+  }
+
 }
