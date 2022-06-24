@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.RatingAnalyzerImplementation.RatingAnalyzerImplementationTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-06-24T09:43:28" hostname="88665a479694.ant.amazon.com" time="0.027">
+  <properties/>
+  <testcase name="median()" classname="com.RatingAnalyzerImplementation.RatingAnalyzerImplementationTest" time="0.016"/>
+  <testcase name="mean()" classname="com.RatingAnalyzerImplementation.RatingAnalyzerImplementationTest" time="0.003"/>
+  <testcase name="mode()" classname="com.RatingAnalyzerImplementation.RatingAnalyzerImplementationTest" time="0.006"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

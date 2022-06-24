@@ -28,7 +28,9 @@ public class IRSEnumTest {
    */
   @Test
   public void testSingleton() {
-    
+    IRSEnum irs1 = IRSEnum.getInstance();
+    IRSEnum irs2 = IRSEnum.getInstance();
+    assertSame(irs1, irs2);
   }
   
   @Test

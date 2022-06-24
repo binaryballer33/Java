@@ -7,6 +7,7 @@
  * Copyright LearningPatterns Inc.
  */
 package com.entertainment;
+import com.entertainment.Television.DisplayType;
 
 public class InvalidChannelException
 extends Exception {

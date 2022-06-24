@@ -8,13 +8,20 @@
  */
 package com.javatunes.product;
 
+import com.javatunes.billing.EuropeTax;
+import com.javatunes.billing.Location;
+
+import java.time.LocalDate;
 import java.util.Collection;
 
 public class Order {
   private String id;
+  private double totalCost;
+  private Location location;
   
-  public Order(String id) {
+  public Order(String id, Location location) {
     this.id = id;
+    this.location = location;
   }
   
   /**
@@ -23,6 +30,7 @@ public class Order {
    * get cart total and print
    */
   public void processCart(ShoppingCart<? extends Product> cart) {
+    totalCost = cart.total();
     System.out.println("Order: " + getId() + " contains the following:");
     
     Collection<? extends Product> cartItems = cart.allItems();
@@ -31,8 +39,16 @@ public class Order {
     }
     System.out.println("Order Total: " + cart.total());
   }
+
+  public double getTax() {
+    return location.getTaxCalculator().taxAmount(totalCost);
+  }
   
   public String getId() {
     return id;
+  }
+
+  public double getTotalCost() {
+    return totalCost;
   }
 }

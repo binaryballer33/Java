@@ -14,11 +14,11 @@ public class MessagePrinterClient {
     MessagePrinter printer1 = new MessagePrinter("Roses are red");  // take the default interval
     MessagePrinter printer2 = new MessagePrinter("Violets are blue", 1375);
     
-    printer1.start();
-    printer2.start();
+    new Thread(printer1, "Shaq's Printer1").start();
+    new Thread(printer2, "Shaq's Printer2").start();
     
     // just for demonstration purposes - this shows why you don't call run() directly
-    // printer1.run();
-    // printer2.run();
+//     printer1.run();
+//     printer2.run();
   }
 }

@@ -9,7 +9,8 @@ import org.junit.Test;
 public class EmployeeFactoryTest {
   private Map<String,String> seMap;
   private Map<String,String> heMap;
-  
+
+
   /**
    * client input request is a Map<String,String>, here's a sample
    * key        value
@@ -44,6 +45,7 @@ public class EmployeeFactoryTest {
     heMap.put("rate",     "50.0");
     heMap.put("hours",    "40.0");
   }
+
   
   /**
    * TASK: verify that passing seMap into your factory returns a SalariedEmployee, with all properties set.
@@ -51,24 +53,37 @@ public class EmployeeFactoryTest {
    *   assertEquals(SalariedEmployee.class, emp.getClass())
    */
   @Test
-  public void testCreateEmployeeSalaried() {
+  public void createEmployee_salaried() {
     // TODO
+    Employee sE = EmployeeFactory.createEmployee(seMap);
+    assertEquals("Jackie", sE.getName());
+    assertEquals(50000.0, ((SalariedEmployee) sE).getSalary(), .001);
   }
   
   /**
    * TASK: verify that passing heMap into your factory returns a HourlyEmployee, with all properties set.
    */
   @Test
-  public void testCreateEmployeeHourly() {
+  public void createEmployee_hourly() {
     // TODO
+    Employee hE = EmployeeFactory.createEmployee(heMap);
+    assertEquals("Jackie", hE.getName());
+    assertEquals(50, ((HourlyEmployee) hE).getRate(), 0.001);
+    assertEquals(40.0, ((HourlyEmployee)hE).getHours(), 0.001);
   }
   
   /**
    * TASK: verify that passing a map with an invalid "type" value results in IllegalArgumentException.
    * The only valid values for "type" are "HE" or "SE".
    */
-  @Test
-  public void testCreateEmployeeInvalidTypeThrowsIllegalArgumentException() {
+  @Test(expected = IllegalArgumentException.class)
+  public void createEmployee_invalid(){
     // TODO
+    Map<String, String> invalidMap = Map.of(
+                    "type", "SO",
+                    "name", "NotYou",
+                    "hireDate", "1980-01-01"
+    );
+    EmployeeFactory.createEmployee(invalidMap);
   }
 }

@@ -9,5 +9,26 @@
 package com.javatunes.billing;
 
 public enum Location {
-  USA, EUROPE, ONLINE
+  USA {
+    @Override
+    public TaxCalculator getTaxCalculator() {
+      return new USATax();
+    }
+  },
+  EUROPE{
+    @Override
+    public TaxCalculator getTaxCalculator() {
+      return new EuropeTax();
+    }
+  },
+  ONLINE{
+    @Override
+    public TaxCalculator getTaxCalculator() {
+      return new OnlineTax();
+    }
+  };
+
+  public abstract TaxCalculator getTaxCalculator();
+
+
 }

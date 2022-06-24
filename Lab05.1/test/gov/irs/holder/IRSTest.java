@@ -27,8 +27,10 @@ public class IRSTest {
    * TODO: verify that two calls to IRS.getInstance() return the same instance.
    */
   @Test
-  public void testSingleton() {
-    
+  public void getInstance_Singleton() {
+    IRS irs1 = IRS.getInstance();
+    IRS irs2 = IRS.getInstance();
+    assertEquals(irs1, irs2);
   }
   
   @Test

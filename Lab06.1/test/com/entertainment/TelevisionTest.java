@@ -10,6 +10,8 @@ package com.entertainment;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import com.entertainment.Television.DisplayType;
+
 
 public class TelevisionTest {
 

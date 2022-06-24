@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import gov.irs.TaxPayer;
 
-public enum IRSEnum {
+public enum IRSEnum implements IRS{
   INSTANCE;
   
   // BUSINESS CODE
@@ -29,7 +29,7 @@ public enum IRSEnum {
   }
   
   
-  // not needed – just makes enum look more like regular singleton
+  // not needed ï¿½ just makes enum look more like regular singleton
   public static IRSEnum getInstance() {
     return INSTANCE;
   }
